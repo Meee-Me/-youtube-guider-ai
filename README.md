@@ -1,16 +1,24 @@
-# YouTube Guider AI — Netlify build
+# YouTube Guider AI
 
-## Deploy
-1. Upload this complete ZIP to a GitHub repository (extract it first; do not deploy only `index.html`).
-2. In Netlify choose **Add new project → Import an existing project** and connect the repository.
-3. Build settings: leave build command empty; publish directory `.`. `netlify.toml` configures the Functions directory and `/api/channel` rewrite.
-4. Deploy, then open the site's `netlify.app` URL and search for `@MrBeast` or another public channel.
+A small web dashboard that shows a YouTube channel's subscribers, total videos, views, most popular videos, and a rough production-cost estimate.
 
-## Included
-- `index.html`: dashboard UI.
-- `channel-core.js`: shared channel lookup logic.
-- `netlify/functions/channel.mjs`: Netlify Function adapter.
-- `netlify.toml`: routes `/api/channel` to the function.
+Enter a channel `@handle`, URL, ID, or name to get started.
 
-## Important limitations
-The backend uses unofficial public YouTube interfaces, not the official YouTube Data API. YouTube may change or block these interfaces; therefore no-key access to every channel is not guaranteed. Subscriber/view/video counts and likes may be hidden or rounded. The investment estimate is a heuristic range, not actual creator spending or a verified AI audit. Netlify's function execution limits can also interrupt slow YouTube responses, depending on the plan.
+## How it works
+- `index.html` is the dashboard.
+- `netlify/functions/channel.mjs` is the serverless function behind `/api/channel`.
+- `channel-core.js` calls the official YouTube Data API v3.
+
+## Setup
+1. Create a free YouTube Data API v3 key in Google Cloud.
+2. In Netlify, add an environment variable named `YOUTUBE_API_KEY` with your key. Mark it as secret.
+3. Deploy from this repository. Leave the build command empty and set the publish directory to `.`.
+
+Never put the API key in the code.
+
+## Limits
+- The free YouTube quota is 10,000 units per day. Each search costs about 100 units.
+- Subscriber counts are rounded by YouTube, and some channels hide them.
+- The investment figure is a rough estimate based on the title, length and channel size. It is not the creator's real spending.
+
+Not affiliated with or endorsed by YouTube.
