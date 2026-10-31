@@ -1,6 +1,6 @@
-import handler from '../../channel-core.js';
+import coreHandler from '../../channel-core.js';
 
-export default async (event) => {
+export const handler = async (event) => {
   const params = event.queryStringParameters || {};
   const headers = {};
   let statusCode = 200;
@@ -12,10 +12,12 @@ export default async (event) => {
   };
   const req = { method: event.httpMethod || 'GET', query: params };
   try {
-    await handler(req, res);
+    await coreHandler(req, res);
   } catch (error) {
     statusCode = 502;
     body = JSON.stringify({ error: error?.message || 'Channel lookup failed.' });
   }
   return { statusCode, headers: { 'Content-Type': 'application/json', ...headers }, body };
 };
+
+
