@@ -1,5 +1,5 @@
 // YouTube Guider AI - channel lookup using the official YouTube Data API v3.
-// The API key is read from the Netlify environment variable YOUTUBE_API_KEY (never put the key in code).
+// The API key is read from the environment variable YOUTUBE_API_KEY, set in Vercel (or Netlify). Never put the key in code.
 const API = 'https://www.googleapis.com/youtube/v3';
 
 async function yt(path, params) {

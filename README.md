@@ -6,13 +6,15 @@ Enter a channel `@handle`, URL, ID, or name to get started.
 
 ## How it works
 - `index.html` is the dashboard.
-- `netlify/functions/channel.mjs` is the serverless function behind `/api/channel`.
+- `api/channel.js` is `/api/channel` on **Vercel** (the live site, https://deluxe-youtube-guider.vercel.app).
+- `netlify/functions/channel.mjs` is the same function on Netlify.
 - `channel-core.js` calls the official YouTube Data API v3.
 
 ## Setup
 1. Create a free YouTube Data API v3 key in Google Cloud.
-2. In Netlify, add an environment variable named `YOUTUBE_API_KEY` with your key. Mark it as secret.
-3. Deploy from this repository. Leave the build command empty and set the publish directory to `.`.
+2. In Vercel (project **youtube-guider-ai**, Settings, Environment Variables), add `YOUTUBE_API_KEY` with your key
+   and mark it Sensitive. On Netlify it is the same variable name.
+3. Deploy from this repository. There is no build step; the site is the repository root.
 
 Never put the API key in the code.
 
