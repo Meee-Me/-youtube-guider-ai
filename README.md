@@ -10,7 +10,7 @@ Enter a channel `@handle`, URL, ID, or name to get started.
 - `channel-core.js` calls the official YouTube Data API v3.
 
 ## Deluxe account
-The page loads `deluxe.js` from [Deluxe Main](https://deluxe-drive.deluxelordd.workers.dev/main). Tap **Sign in with Deluxe Main** (top bar) and the channels you look at are saved to your Deluxe account (under the `youtube` website in Deluxe Main) and shown on the search screen on any device. Accounts are only made on Deluxe Main.
+The page loads `deluxe.js` from [Deluxe Main](https://deluxe-main.vercel.app). Tap **Sign in with Deluxe Main** (top bar) and the channels you look at are saved to your Deluxe account (under the `youtube` website in Deluxe Main) and shown on the search screen on any device. Accounts are only made on Deluxe Main.
 
 ## Setup
 1. Create a free YouTube Data API v3 key in Google Cloud.
