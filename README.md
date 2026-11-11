@@ -6,13 +6,18 @@ Enter a channel `@handle`, URL, ID, or name to get started.
 
 ## How it works
 - `index.html` is the dashboard.
-- `netlify/functions/channel.mjs` is the serverless function behind `/api/channel`.
+- `api/channel.js` (Vercel) and `netlify/functions/channel.mjs` (Netlify) serve `/api/channel`.
 - `channel-core.js` calls the official YouTube Data API v3.
 
 ## Deluxe account
 The page loads `deluxe.js` from [Deluxe Main](https://deluxe-main.vercel.app). Tap **Sign in with Deluxe Main** (top bar) and the channels you look at are saved to your Deluxe account (under the `youtube` website in Deluxe Main) and shown on the search screen on any device. Accounts are only made on Deluxe Main.
 
-## Setup
+## Setup on Vercel
+1. Create a free YouTube Data API v3 key in Google Cloud (APIs & Services, Library, YouTube Data API v3, Enable; then Credentials, Create credentials, API key).
+2. In Vercel: the YouTube Guider project, Settings, Environment Variables. Add `YOUTUBE_API_KEY` with your key (tick Production, mark it Sensitive), Save.
+3. Deployments, the top one, ⋯, Redeploy. `api/channel.js` serves `/api/channel` there.
+
+## Setup on Netlify
 1. Create a free YouTube Data API v3 key in Google Cloud.
 2. In Netlify, add an environment variable named `YOUTUBE_API_KEY` with your key. Mark it as secret.
 3. Deploy from this repository. Leave the build command empty and set the publish directory to `.`.
